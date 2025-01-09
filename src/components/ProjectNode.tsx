@@ -447,7 +447,15 @@ export const ProjectNode: React.FC<Project> = (project) => {
     }
     return (
       <div onClick={handleImageClick} style={{ cursor: 'pointer', width: '100%', height: '100%' }}>
-        <img src={url} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img 
+          src={url.startsWith('http') ? url : `${window.location.origin}${import.meta.env.BASE_URL}${url.startsWith('/') ? url.slice(1) : url}`} 
+          alt={project.title} 
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          onError={(e) => {
+            console.error('Image failed to load:', url);
+            e.currentTarget.style.display = 'none';
+          }}
+        />
         <div className="overlay"><FaExpand /></div>
       </div>
     );
