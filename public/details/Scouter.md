@@ -1,24 +1,25 @@
-# Scouter Project v 1.0
-AI-powered object detection system with real-time enhancement and accessibility features
+# Scouter Project v1.0: Next-Generation AI-Powered Object Detection System
 
-#### Contributor:
-- **Lead System Developer**: Minwoo Kim - [Minwoo Kim Github](https://github.com/MinwooKim1990)
-- **Azure AI Developer**: Duhyeon Nam - [Duhyeon Nam Github](https://github.com/namduhus)
-- **AI Code Engineer**: Nakyung Cho - [Nakyung Cho Github](http://github.com/nakyung1007)
-- **Azure System Developer**: Seungwoo Hong - [Seungwoo Hong Github](https://github.com/Seungwoo-H1)
-- **AI Code Engineer**: Hyunjun Kim - [Hyunjun Kim Github](https://github.com/hyunjun-kim4984)
-- **Azure AI Developer**: Sumin Hyun - [Sumin Hyun Github](https://github.com/hellooobella)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![CUDA](https://img.shields.io/badge/CUDA-11.0+-green.svg)](https://developer.nvidia.com/cuda-toolkit)
 
-## Overview
-An AI system inspired by Cyberpunk 2077 that combines several advanced features:
-- Zero-shot object detection with detailed captioning
-- Real-time object enhancement and upscaling
-- Speech-to-text (STT) functionality for accessibility
-- Overlay display system similar to Cyberpunk 2077 Scanner elements
-- Extra information with Bing Search API (Default: Deactivated)
-- STT to LLM Response on display
+## 🌟 Overview
 
-## Demo Screenshots
+Welcome to Scouter Project - a cutting-edge AI system inspired by Cyberpunk 2077's scanning technology. This revolutionary project combines state-of-the-art computer vision, natural language processing, and real-time enhancement capabilities to create an immersive and futuristic object detection experience.
+
+### 🚀 Key Features
+
+- **Zero-Shot Object Detection**: Advanced AI-powered detection system that can identify objects without prior training
+- **Real-Time Enhancement**: CUDA-accelerated upscaling technology for crystal-clear object visualization
+- **Multimodal Integration**: Seamlessly combines vision, speech, and language AI models
+- **Cyberpunk-Style UI**: Futuristic overlay system inspired by Cyberpunk 2077
+- **Voice Intelligence**: Built-in Speech-to-Text with LLM integration for intelligent responses
+- **Smart Search**: Integrated Bing Search API for real-time object information retrieval
+
+## 📸 Visual Showcase
+
+### Main Interface
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/0779a6e0-684d-4cf6-89b1-b21d8f02f4b5" width="400" alt="Demo Screenshot 1"/></td>
@@ -26,7 +27,7 @@ An AI system inspired by Cyberpunk 2077 that combines several advanced features:
   </tr>
 </table>
 
-## GUI Demo Screenshots
+### GUI Interface
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/735d84b8-a426-4614-a867-d36b1c37e6bc" width="400" alt="Demo Screenshot 3"/></td>
@@ -34,7 +35,7 @@ An AI system inspired by Cyberpunk 2077 that combines several advanced features:
   </tr>
 </table>
 
-## STT to LLM Demo Screenshots
+### AI Assistant Interface
 <table>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/eed1b282-17d3-402b-be88-dfd9e63b588d" width="400" alt="Demo Screenshot 5"/></td>
@@ -42,89 +43,71 @@ An AI system inspired by Cyberpunk 2077 that combines several advanced features:
   </tr>
 </table>
 
-## Installation and Setup
+## 🎯 Core Capabilities
 
-1. Clone the repository
-```bash
-git clone https://github.com/MinwooKim1990/Scouter_PJ.git
-cd Scouter_PJ
-```
+### Advanced Object Detection
+- Real-time object tracking with zero-shot capabilities
+- Instant bounding box creation and tracking
+- Cyberpunk-inspired visual overlay system
 
-2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
+### AI-Powered Enhancement
+- Real-time object upscaling using Fast-SRGAN
+- Dynamic resolution enhancement
+- Intelligent detail preservation
 
-3. Prepare your data
-```bash
-mkdir data
-```
-Place your video files in the `data` folder
+### Multimodal AI Integration
+- Speech-to-Text with OpenAI Whisper
+- Advanced language processing with multiple LLM options
+- Seamless voice command integration
 
-4. Run the application
-```bash
-python system.py --video path/to/your/video.mp4(integer 0 for webcam, Default: 0) --bing [YOUR-API-KEY] --llm-provider [google, openai, groq] --llm-api-key [YOUR-API-KEY] --llm-model [providing models]
-```
+### Smart Information Retrieval
+- Real-time Bing Search integration
+- Automatic object information gathering
+- Dynamic content display
 
-5. For checking arguments help
-```bash
-python system.py --help
-```
+## 🛠️ Technical Architecture
 
-## Use GUI
+### State-of-the-Art AI Models
+- **MobileSAM**: Optimized mobile-first object detection
+- **Fast-SRGAN**: High-performance image upscaling
+- **Florence 2**: Advanced image captioning
+- **Multiple LLM Support**:
+  - Google Gemini API
+  - OpenAI GPT Models
+  - Groq LLMs
+  - Anthropic Claude Models
 
-1. Clone the repository
-```bash
-git clone https://github.com/MinwooKim1990/Scouter_PJ.git
-cd Scouter_PJ
-```
+### Hardware Specifications
+- **GPU**: NVIDIA CUDA-enabled GPU
+  - Minimum VRAM: 8GB
+  - Recommended: 24GB for real-time upscaling
+  - Optimized for RTX 4090
+- **System Requirements**:
+  - Memory: 2GB minimum
+  - Storage: 2.5GB
+  - CUDA 11.0+
 
-2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
+### Performance Metrics
+- Base Processing: 30-40 FPS
+- Heavy Workload: 10-20 FPS
+- VRAM Usage: ~7GB (up to 21GB with upscaling)
+- Optimized for 720P video processing
 
-3. Prepare your data
-```bash
-mkdir data
-```
-Place your video files in the `data` folder
+## 🎮 Interactive Controls
 
-4. Run the application
-```bash
-python tkinterapp.py
-```
+### Core Commands
+| Action | Input | Function |
+|--------|-------|----------|
+| Object Detection | Left Click | Activate detection & tracking |
+| Release Object | Right Click | Stop current tracking |
+| Enhancement Toggle | F Key | Toggle real-time upscaling |
+| Voice Recording | T Key | Control subtitle recording |
+| Smart Search | S Key | Toggle object search |
+| AI Assistant | A Key | Control LLM interaction |
+| Playback Control | Space | Toggle video playback |
+| Help Display | Tab | Toggle instruction overlay |
 
-## How to Use
-
-### Basic Controls
-
-#### Object Detection & Tracking
-- **Left Click**: 
-  - Click anywhere on the video to activate zero-shot object detection
-  - Click on an object to create a bounding box and start tracking
-- **Right Click**: 
-  - Releases the current bounding box and stops tracking
-
-#### Image Enhancement
-- **F Key**: 
-  - Toggles real-time upscaling of the tracked object
-  - Default: Disabled
-
-#### Voice Subtitles
-- **T Key**: 
-  - First Press: Starts voice recording for subtitle generation
-  - Second Press: Stops recording and processes the subtitle
-
-#### Image Search
-- **S Key**: 
-  - Toggles Activate image search of detected object
-  - Default: Disabled
-
-#### STT to LLM
-- **A Key**: 
-  - First Press: Starts prompt recording for LLM
-  - Second Press: Stops prompt recording  and processes the LLM output
+### Supported LLM Models
 <table>
   <tr>
     <th>Provider</th>
@@ -173,7 +156,7 @@ python tkinterapp.py
     <td>mixtral-8x7b-32768</td>
   </tr>
   <tr>
-    <td rowspan="5" align="center">Anthropic</td>
+    <td rowspan="3" align="center">Anthropic</td>
     <td>claude-3-5-sonnet-20241022</td>
   </tr>
   <tr>
@@ -184,103 +167,87 @@ python tkinterapp.py
   </tr>
 </table>
 
-#### Stop Video
-- **Space Key**: 
-  - First Press: Stop video playing and can do object detection
-  - Second Press: play video again
+## 🚀 Getting Started
 
-#### Stop Video
-- **Tab Key**: 
-  - First Press: Turn on full instructions (default: turn off)
-  - Second Press: Turn off all instructions
+### Quick Installation
+```bash
+# Clone repository
+git clone https://github.com/MinwooKim1990/Scouter_PJ.git
+cd Scouter_PJ
 
-### Quick Reference
-| Action | Key/Button | Function |
-|--------|------------|----------|
-| Select Object | Left Click | Activates detection & tracking |
-| Release Tracking | Right Click | Stops tracking current object |
-| Toggle Upscaling | F | Enable realtime upscaling |
-| Voice Recording | T | Start/Stop subtitle recording |
-| Image Search | S | Activate Bing image search |
-| STT to LLM | A | Start/Stop prompt recording to LLM |
-| Play/Stop | Space | Play/Stop video |
-| Show Instructions | Tab | Showing/Not Showing instructions |
+# Install dependencies
+pip install -r requirements.txt
 
-## Features
-- Zero-shot object detection
-- Real-time object tracking
-- AI-powered image upscaling
-- Speech-to-text subtitle generation
-- Speech-to-LLM output generation
-- Cyberpunk-style overlay display
+# Prepare data directory
+mkdir data
 
-## Technical Specifications
-### Hardware Requirements
-- **GPU**: NVIDIA GPU with CUDA support
-  - Minimum VRAM: 8GB (For realtime Upscaling: 24GB)
-  - Tested on: NVIDIA GPU RTX 4090
-- **Memory**: 2GB
-- **Storage**: 2.5GB
+# Launch application
+python system.py --video path/to/video.mp4 --bing YOUR-API-KEY --llm-provider PROVIDER --llm-api-key API-KEY --llm-model MODEL
+```
 
-### Performance Notes
-- Tested 720P quality videos
-- Processing FPS Without Realtime Upscaling FPS: 30 ~ 40 FPS
-- Processing FPS during heaviest work load: 10 ~ 20 FPS
-- Current version is optimized for VRAM efficiency
-- Peak VRAM usage: ~7GB during operation (In Realtime Upscaling ~ 21GB during operation)
-- Further optimization may be available in future updates
+### GUI Launch
+```bash
+python tkinterapp.py
+```
 
-## Models & Attributions
-This project utilizes several open-source models:
+## 🔧 System Architecture
 
-- **MobileSAM**: Zero-shot object detection - Apache-2.0 License
-  - Source: [Ultralytics MobileSAM](https://docs.ultralytics.com/ko/models/mobile-sam/)
-- **Fast-SRGAN**: Real-time image upscaling - MIT License
-  - Source: [Fast-SRGAN](https://github.com/HasnainRaz/Fast-SRGAN)
-- **OpenAI Whisper**: Speech-to-text processing - MIT License
-  - Source: [OpenAI Whisper](https://github.com/openai/whisper)
-- **Florence 2**: Image captioning - MIT License
-  - Source: [Microsoft Florence](https://huggingface.co/microsoft/Florence-2-large)
-- **Bing Search API**: Image Search
-  - Source: [Microsoft Azure](https://learn.microsoft.com/en-us/bing/search-apis/bing-image-search/overview)
-- **Google Gemini API**: LLM Response
-  - Source: [Google AI](https://ai.google.dev/gemini-api/docs/models/gemini)
-- **OpenAI API**: LLM Response
-  - Source: [OpenAI](https://platform.openai.com/docs/overview)
-- **GROQ API**: LLM Response
-  - Source: [GROQ](https://console.groq.com/docs/overview)
+The Scouter Project implements a sophisticated multi-threaded architecture that enables real-time processing of multiple AI models simultaneously:
 
-## License
-This project is licensed under the MIT License since all major components use either MIT or Apache-2.0 licenses. The MIT License is compatible with both and maintains the open-source nature of the utilized models.
+1. **Core Detection System**
+   - Zero-shot object detection using MobileSAM
+   - Real-time tracking implementation
+   - CUDA-optimized processing pipeline
 
-This project uses the following APIs. Please ensure compliance with their respective terms of use:
+2. **Enhancement Pipeline**
+   - Fast-SRGAN upscaling
+   - Dynamic resolution management
+   - Memory-optimized processing
 
-- **Bing Search API**:
-  - **Documentation**: [Bing Web Search API](https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/)
-  - **Pricing**: [Bing Search API Pricing](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/)
-  - **Licensing**: Usage of the Bing Search API is subject to Microsoft's [Terms of Use](https://www.microsoft.com/en-us/servicesagreement) and [Privacy Statement](https://privacy.microsoft.com/en-us/privacystatement).
+3. **Voice Processing System**
+   - Whisper STT integration
+   - Real-time audio processing
+   - Multi-threaded audio handling
 
-- **OpenAI API**:
-  - **Documentation**: [OpenAI API](https://platform.openai.com/docs/api-reference)
-  - **Terms of Use**: [OpenAI Terms of Use](https://platform.openai.com/terms)
-  - **Licensing**: OpenAI's API usage is governed by their [Terms of Use](https://platform.openai.com/terms) and [Usage Policies](https://platform.openai.com/policies/usage-policies).
+4. **LLM Integration**
+   - Multiple provider support
+   - Asynchronous processing
+   - Response optimization
 
-- **Google GenAI API**:
-  - **Documentation**: [Google GenAI API](https://developers.generativeai.google/)
-  - **Terms of Service**: [Google API Terms](https://developers.google.com/terms/)
-  - **Licensing**: Google's APIs are subject to the [Google APIs Terms of Service](https://developers.google.com/terms/).
+## 📚 Technology Stack
 
-- **Groq API**:
-  - **Documentation**: [Groq API Documentation](https://console.groq.com/docs)
-  - **Licensing**: Usage of the Groq API must comply with Groq's API policies. Specific licensing details can be found in their [API documentation](https://console.groq.com/docs).
+### Core AI Models
+- **MobileSAM**: [Ultralytics MobileSAM](https://docs.ultralytics.com/ko/models/mobile-sam/)
+- **Fast-SRGAN**: [Fast-SRGAN Repository](https://github.com/HasnainRaz/Fast-SRGAN)
+- **OpenAI Whisper**: [Whisper GitHub](https://github.com/openai/whisper)
+- **Florence 2**: [Microsoft Florence](https://huggingface.co/microsoft/Florence-2-large)
 
-- **Anthropic API**:
-  - Documentation: [Anthropic API Documentation](https://docs.anthropic.com/claude/docs)
-  - Terms of Service: [Anthropic Terms of Service](https://www.anthropic.com/legal/terms)
-  - Usage Guidelines: [Anthropic Usage Policies](https://www.anthropic.com/legal/use-policies)
-  - Licensing: Use of the Anthropic API is subject to their [Terms of Service and Acceptable Use Policy](https://www.anthropic.com/legal/acceptable-use)
+### API Integrations
+- **Bing Search**: [Documentation](https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/)
+- **Google Gemini**: [API Documentation](https://ai.google.dev/gemini-api/docs/models/gemini)
+- **OpenAI**: [API Reference](https://platform.openai.com/docs/api-reference)
+- **Groq**: [Documentation](https://console.groq.com/docs)
+- **Anthropic**: [Claude API](https://docs.anthropic.com/claude/docs)
 
-### Note
-To ensure the security of API keys, store them securely using environment variables or secret management solutions. Do not expose sensitive information in public repositories.
+## 📜 Licensing
 
-See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. All components use either MIT or Apache-2.0 licenses, ensuring open-source compatibility and accessibility.
+
+### API Compliance
+Please ensure compliance with the terms of service for all integrated APIs:
+- Bing Search API
+- OpenAI API
+- Google GenAI API
+- Groq API
+- Anthropic API
+
+## 🔒 Security Note
+
+For API key security:
+- Use environment variables
+- Implement secure key management
+- Never expose keys in repositories
+
+## 👥 Contributing
+
+Contributions are welcome! Please read our contributing guidelines and submit pull requests for any enhancements.

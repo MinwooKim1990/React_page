@@ -1,64 +1,105 @@
 # JobPT
 
-## 서비스 개요
-현대 사회에서 취업 준비는 반복적이고 시간 소모적인 과정으로, 구직자가 자신의 역량을 효과적으로 어필하지 못해 기회를 놓치는 경우가 많습니다. 이를 해결하기 위해, **직무 공고 필터링, 회사 정보 요약 제공, 이력서 분석 및 맞춤형 피드백** 기능을 갖춘 지능형 취업 지원 서비스를 제공합니다.
+An intelligent job search support service that **filters job postings**, provides **summaries of company information**, and **analyses resumes with personalised feedback**. The aim is to streamline the repetitive and time-consuming aspects of job hunting, ensuring that job seekers can effectively showcase their skills and avoid missing valuable opportunities.
 
-## 서비스 구조도
-![pipeline](./system_pipeline.png)
+---
 
-## 데이터베이스 구축
-![vectordb](./inserting_data.png)
+## Service Overview
 
-## 시스템 사용 방법
+Modern job seekers often face repetitive tasks—searching for relevant job postings, tailoring their resumes repeatedly, and struggling to highlight their strengths in the most effective manner. **JobPT** tackles these challenges with:
 
-OmniParser 폴더 압축 해제
+1. **Job Posting Filtering**: Helps narrow down relevant openings.  
+2. **Company Summaries**: Automatically aggregates and summarises essential information about prospective employers.  
+3. **Resume Analysis & Feedback**: Provides in-depth analysis of your CV, offering suggestions for improvement and highlighting the strengths that match specific job requirements.
 
--   system 폴더안에 OmniParser_v1.zip 파일을 압축해제
--   반드시 OmniParser_v1 폴더명이여야 함
+Below is a brief pipeline of how the system operates:
 
-프로젝트 패키지 설치
+![System Pipeline](https://github.com/user-attachments/assets/4395063c-5c8b-41ea-b49e-33d73eadedb2)
 
-```
+---
+
+## Building the Database
+
+JobPT uses a semantic chunking mechanism and a vector database (ChromaDB) to store and retrieve relevant text segments efficiently.
+
+![Inserting Dataset into VectorDB](https://github.com/user-attachments/assets/88ba566b-0a5f-46a5-9344-9807b838e8d5)
+
+---
+
+## How to Use the System
+
+### 1. Extract the OmniParser Folder
+
+1. Within the `system` folder, locate `OmniParser_v1.zip`.  
+2. Unzip the archive **exactly** as `OmniParser_v1` (the folder name must remain unchanged).
+
+### 2. Install Project Dependencies
+
+In the main project directory, run:
+
+```bash
 pip install -r requirements.txt
 ```
 
-OPENAI_API_KEY 등록
-
+### 3.Register Your OPENAI_API_KEY
+```bash
+export OPENAI_API_KEY=[YOUR_OPENAI_API_KEY]
 ```
-export OPENAI_API_KEY=api key
-```
+Replace `[YOUR_OPENAI_API_KEY]` with your actual API key obtained from OpenAI.
 
-Chroma DB 세팅
+### 4. Set Up Chroma DB
+Navigate to the `system` folder and insert chunked documents into the vector database:
 
-```
+```bash
 cd system
 python insert_chunks.py
 ```
 
-API 실행
+### 5. Launch the API
+Run:
 
-```
+```bash
 python system/main.py
 ```
+This starts the main server to handle resume matching and feedback requests.
 
-API 호출 예시 (api_test.py 참조)
+---
 
-```
+## Example API Call
+Below is a sample Python script (```api_test.py```) showing how to send a POST request to the JobPT API:
+
+```python
 import requests
 
-# POST 요청 함수
+# POST request function
 def send_post_request(resume_path):
-    url = "http://localhost:8000/matching"  # 실제 API 엔드포인트로 변경하세요.
+    url = "http://localhost:8000/matching"  # Replace with the actual API endpoint
     data = {"resume_path": resume_path}
 
     try:
         response = requests.post(url, json=data)
-        response.raise_for_status()  # 상태 코드가 200번대가 아니면 예외 발생
-        print("POST 요청 성공:", response.json())
+        response.raise_for_status()  # Raise an exception if status code is not 2xx
+        print("POST request successful:", response.json())
     except requests.exceptions.RequestException as e:
-        print("POST 요청 중 오류 발생:", e)
+        print("Error during POST request:", e)
 
-
-# 함수 호출 예시
+# Example function call
 send_post_request("data/joannadrummond-cv.pdf")
 ```
+
+- `resume_path`: Path to the resume (PDF, DOCX, etc.) you’d like to analyse.
+- The API responds with JSON data detailing the matching score and feedback for the resume.
+
+---
+
+## Features Summary
+
+- **Job Post Filtering**: Sifts through numerous postings to recommend the most relevant ones for your skillset.
+- **Company Information Summaries**: Automatically compiles key data on target companies.
+- **Resume Analysis**: Inspects your CV, rating its relevance and offering specific advice on improvements.
+- **Personalised Feedback**: Supplies a tailored evaluation for each job position, guiding you to revise and refine your resume.
+By combining chunk-based semantic retrieval, ChromaDB for vector storage, and an AI-driven analysis module, **JobPT** offers a cohesive solution to expedite the job application process.
+
+**Thank you for using JobPT!**
+
+We hope this service significantly enhances your job search experience, helping you spend less time on repetitive tasks and more time on the opportunities that truly matter.

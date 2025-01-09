@@ -607,7 +607,9 @@ export const ProjectNode: React.FC<Project> = (project) => {
               }}
             >
               <img 
-                src={project.images?.[0]} 
+                src={project.images?.[0].startsWith('http') 
+                  ? project.images[0] 
+                  : `${window.location.origin}${import.meta.env.BASE_URL}${project.images?.[0].startsWith('/') ? project.images[0].slice(1) : project.images?.[0]}`}
                 alt={project.title}
                 style={{
                   maxWidth: '95vw',
@@ -616,6 +618,10 @@ export const ProjectNode: React.FC<Project> = (project) => {
                   height: 'auto',
                   objectFit: 'contain',
                   borderRadius: '8px'
+                }}
+                onError={(e) => {
+                  console.error('Modal image failed to load:', project.images?.[0]);
+                  e.currentTarget.style.display = 'none';
                 }}
               />
             </Modal>

@@ -1,2 +1,0 @@
-# RLChess
-Reinforcement Learning Chess
