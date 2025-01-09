@@ -363,13 +363,17 @@ export const ProjectNode: React.FC<Project> = (project) => {
           }
 
           if (fileName.endsWith('.pdf')) {
-            setDetailContent(`${import.meta.env.BASE_URL}details/${fileName}`);
+            const pdfUrl = `${window.location.origin}${import.meta.env.BASE_URL}details/${fileName}`;
+            console.log('Loading PDF from:', pdfUrl);
+            setDetailContent(pdfUrl);
             setIsPdf(true);
             return;
           }
 
           try {
-            const response = await fetch(`${import.meta.env.BASE_URL}details/${fileName}`);
+            const markdownUrl = `${window.location.origin}${import.meta.env.BASE_URL}details/${fileName}`;
+            console.log('Loading Markdown from:', markdownUrl);
+            const response = await fetch(markdownUrl);
             if (response.ok) {
               const content = await response.text();
               setDetailContent(content);
