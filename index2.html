@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minwoo Kim - AI Researcher Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <style>
+        .project-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        .filter-button {
+            padding: 8px 16px;
+            border: none;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .filter-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .project-card {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .project-card.hidden {
+            display: none;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+        #back-to-top:hover {
+            background-color: var(--secondary-color);
+        }
+        .theme-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .theme-switch input {
+            display: none;
+        }
+        .theme-switch label {
+            cursor: pointer;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .theme-switch .slider {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            display: inline-block;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .theme-switch input:checked + label .slider {
+            transform: translateX(30px);
+            background-color: #ffd700;
+        }
+        body.dark-theme {
+            --background-color: #1a1a1a;
+            --text-color: #ffffff;
+            --primary-color: #3a3a92;
+            --secondary-color: #00b2ff;
+        }
+        body.dark-theme .category {
+            background-color: #2c2c2c;
+        }
+        body.dark-theme .project-card {
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        body.dark-theme .filter-button {
+            background-color: #3a3a3a;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme switch -->
+    <div class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        <label for="theme-toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
+    <header class="header">
+        <div class="header-content">
+            <h1 class="animate__animated animate__fadeInDown">Minwoo (Michael) Kim</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">AI Researcher & Machine Learning Scientist</p>
+            <div class="social-links animate__animated animate__fadeIn animate__delay-2s">
+                <a href="https://github.com/MinwooKim1990/" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/minwoo-michael-kim/" target="_blank" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-down animate__animated animate__bounce animate__infinite">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <div class="modal" id="imageModal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <main id="content">
+        <!-- Project Category -->
+        <section class="category" data-aos="fade-up">
+            <h2 class="section-title">Career & Research</h2>
+            <div class="project-filter">
+                <button class="filter-button active" data-filter="all">All</button>
+                <button class="filter-button" data-filter="ai">AI</button>
+                <button class="filter-button" data-filter="vision">Vision</button>
+                <button class="filter-button" data-filter="nlp">NLP</button>
+                <button class="filter-button" data-filter="research">Research</button>
+                <button class="filter-button" data-filter="physics">Physics</button>
+            </div>
+
+            <!-- Scouter Project -->
+            <div class="project-card" data-aos="fade-up" data-category="ai vision">
+                <h3>Scouter - AI Vision Analysis Assistant Platform</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <div class="video-container">
+                                <iframe width="100%" height="315" 
+                                    src="https://www.youtube.com/embed/Uxv_diDK-7s" 
+                                    title="Scouter Project Demo" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>AI-powered Vision Analysis platform for Hearing impaired People</li>
+                                <li>Real-time Zero-shot Object Analysis and Search</li>
+                                <li>Real-time Super-Resolution and LLM usage with STT</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">SRGAN</span>
+                                <span class="tech-badge">MobileSAM</span>
+                                <span class="tech-badge">Asyncronous LLM</span>
+                                <span class="tech-badge">Florence 2</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/scouter_pj" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JobPT Project -->
+            <div class="project-card" data-aos="fade-up" data-category="ai nlp">
+                <h3>JobPT - AI Job Searching Assistant</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <div class="video-container">
+                                <iframe width="100%" height="315" 
+                                    src="https://www.youtube.com/embed/m6EhfmpShCg" 
+                                    title="JobPT Project Demo" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>AI-powered Matching Job Description to CV</li>
+                                <li>Feedback on CV based on Job Description with numerical score</li>
+                                <li>Personalized interview question generation and CV Revision</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">RAG</span>
+                                <span class="tech-badge">ChromaDB</span>
+                                <span class="tech-badge">Vision Parsing</span>
+                                <span class="tech-badge">Knowledge Graph</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/jobpt_un" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DINOv2 Project -->
+            <div class="project-card" data-aos="fade-up" data-category="ai vision research">
+                <h3>DINOv2 Backbone with TensorRT acceleration for Non-Destructive Inspection System Demo</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/lbp.png" alt="Dinov2" class="project-image lazy" data-src="./images/lbp.png">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Automated defect detection system using X-ray imagery</li>
+                                <li>Implemented LBP and advanced image preprocessing</li>
+                                <li>TensorRT optimization for real-time inference</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">DINOv2</span>
+                                <span class="tech-badge">TensorRT</span>
+                                <span class="tech-badge">CUDA</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/portfolio/blob/6e877d573dbb5384881bea858606025913f881de/Dino_Backbone2.ipynb" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chain of Thought Knowledge -->
+            <div class="project-card" data-aos="fade-up" data-category="ai nlp research">
+                <h3>Chain of Thought (CoT) Agent Model Research</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/CoTAgent.png" alt="CoTAgent" class="project-image lazy" data-src="./images/CoTAgent.png">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Model Reasoning research like OpenAI's O1 model</li>
+                                <li>Chain of Thought (CoT) based agent systems with self-aware iteration</li>
+                                <li>Innovative sequential code execution approach</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Reasoning</span>
+                                <span class="tech-badge">Sequential LLM</span>
+                                <span class="tech-badge">CUDA</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/portfolio/tree/00d9eaf59c174386e73d0f00f9c9ae445d5eb2f3/CoTAgent" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closetmate Project -->
+            <div class="project-card" data-aos="fade-up" data-category="ai vision">
+                <h3>Closetmate - AI Fashion Assistant</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/closetmate.png" alt="Closetmate Project" class="project-image lazy" data-src="./images/closetmate.png">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>AI-powered fashion recommendation system</li>
+                                <li>Personal wardrobe management and styling suggestions</li>
+                                <li>Image-based fashion item recognition</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">DeiT</span>
+                                <span class="tech-badge">Vectorized Search</span>
+                                <span class="tech-badge">K-means Clustering</span>
+                                <span class="tech-badge">Boolean Masking</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/closetmate" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JARVIS Project -->
+            <div class="project-card" data-aos="fade-up" data-category="ai nlp vision">
+                <h3>J.A.R.V.I.S - Multimodal General Assistant</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/JARVIS.png" alt="JARVIS" class="project-image lazy" data-src="./images/JARVIS.png">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>AI-powered Multimodal Assistant system</li>
+                                <li>Understand Image, Text, Audio, Function Call</li>
+                                <li>Response with Discord Bot</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Function Call</span>
+                                <span class="tech-badge">Image Understanding</span>
+                                <span class="tech-badge">STT, TTS</span>
+                                <span class="tech-badge">Reduce Latency</span>
+                            </div>
+                            <a href="#" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quantum Mechanics Research -->
+            <div class="project-card" data-aos="fade-up" data-category="research physics">
+                <h3>Quantum Mechanics Research</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-details">
+                            <ul>
+                                <li>Quantum Computing</li>
+                                <li>Feynman Integral</li>
+                                <li>Advanced Physics Research</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Quantum Computing</span>
+                                <span class="tech-badge">Physics</span>
+                                <span class="tech-badge">Mathematical Analysis</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/optimization" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mamba Architecture Research -->
+            <div class="project-card" data-aos="fade-up" data-category="ai research nlp">
+                <h3>Mamba, Jamba, Hymba, Liquid Time-constant Network Research</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-details">
+                            <ul>
+                                <li>Research New Architecture for LLM</li>
+                                <li>Optimize Computing</li>
+                                <li>Reduce Size of Model</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Mamba</span>
+                                <span class="tech-badge">Jamba</span>
+                                <span class="tech-badge">Hymba</span>
+                                <span class="tech-badge">LTC</span>
+                            </div>
+                            <a href="#" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paged Attention Research -->
+            <div class="project-card" data-aos="fade-up" data-category="ai research">
+                <h3>Paged Attention Research (KV Cache)</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/PagedAttention.png" alt="Paged Attention" class="project-image lazy" data-src="./images/PagedAttention.png">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Model optimization research in KV cache</li>
+                                <li>Memory efficiency improvements</li>
+                                <li>Performance optimization techniques</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">vLLM</span>
+                                <span class="tech-badge">PyTorch</span>
+                                <span class="tech-badge">CUDA</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/portfolio/blob/d316a12a73eb0ae7d2c7c3c913f6f1603f55a51f/PagedAttention/PA_Report.md" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monosemantic Neuron Research -->
+            <div class="project-card" data-aos="fade-up" data-category="ai research nlp">
+                <h3>Monosemantic Neuron Research</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/monosemantic.png" alt="Monosemantic" class="project-image lazy" data-src="./images/monosemantic.png">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Neuron specific Monosemanticity</li>
+                                <li>Monosemanticity Checker with Sparse AutoEncoder</li>
+                                <li>Understanding LLM black box</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Sparse AutoEncoder</span>
+                                <span class="tech-badge">Transformer</span>
+                                <span class="tech-badge">Monosemantic Neuron</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/portfolio/blob/01f27bab8a1cf8d13a842b5d730e4527e0d95625/MonosemanticNeuron/Report.md" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parametric Neural Networks Integration -->
+            <div class="project-card" data-aos="fade-up" data-category="ai research physics">
+                <h3>Parametric Neural Networks Integration Dissertation</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/pnni.jpg" alt="PNNI Project" class="project-image lazy" data-src="./images/pnni.jpg">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Developed neural network-based approximation methods for Feynman integral calculations</li>
+                                <li>Reduced computational costs significantly compared to traditional methods</li>
+                                <li>Optimized for CERN LHC-like particle collision experiments</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">Deep Learning</span>
+                                <span class="tech-badge">PyTorch</span>
+                                <span class="tech-badge">Physics</span>
+                            </div>
+                            <a href="https://github.com/MinwooKim1990/disser" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reinforcement Learning Chess -->
+            <div class="project-card" data-aos="fade-up" data-category="ai research">
+                <h3>Reinforcement Learning with Monte Carlo Tree Search for Chess Game</h3>
+                <div class="project-content">
+                    <div class="project-inner">
+                        <div class="project-image-container">
+                            <img src="./images/RLChess.png" alt="RLChess" class="project-image lazy" data-src="./images/RLChess.png">
+                        </div>
+                        <div class="project-details">
+                            <ul>
+                                <li>Optimized movement search with Monte Carlo Tree Search</li>
+                                <li>Reinforcement Learning with Deep Q-Network</li>
+                                <li>Parallel Computing for enhanced performance</li>
+                            </ul>
+                            <div class="tech-stack">
+                                <span class="tech-badge">MCTS</span>
+                                <span class="tech-badge">DQN</span>
+                                <span class="tech-badge">Parallel Processing</span>
+                            </div>
+                            <a href="#" class="github-link" target="_blank">
+                                <i class="fab fa-github"></i> View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category contact">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-container">
+                <form id="contact-form" action="https://formspree.io/f/xrbbowgw" method="POST" data-aos="zoom-in">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="_replyto" placeholder="Email" required>
+                    <textarea name="message" placeholder="Message" required></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top">↑</button>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Minwoo (Michael) Kim. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main2.js"></script>
+    <script src="js/modal.js"></script>
+    <script>
+        // Project filtering
+        const filterButtons = document.querySelectorAll('.filter-button');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category.includes(filter)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Back to Top functionality
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Theme switcher
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('change', () => {
+            body.classList.toggle('dark-theme');
+            localStorage.setItem('dark-theme', body.classList.contains('dark-theme'));
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('dark-theme') === 'true') {
+            body.classList.add('dark-theme');
+            themeToggle.checked = true;
+        }
+
+        // Lazy loading for images
+        document.addEventListener("DOMContentLoaded", function() {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html> 
