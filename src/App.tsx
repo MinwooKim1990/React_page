@@ -7,6 +7,7 @@ import { Header } from './components/Header';
 import { ProjectNode } from './components/ProjectNode';
 import { ThemeToggle } from './components/ThemeToggle';
 import { projects, Project } from './data/projects';
+import { BackgroundMusic } from './components/BackgroundMusic';
 
 /* 1) Define Light & Dark Themes */
 const lightTheme = {
@@ -168,6 +169,16 @@ function App() {
       : projectsWithOrder.filter(p => p.category.includes(activeFilter))
   );
 
+  const playlist = [
+    '/music/Echoes of You_1_1.mp3',
+    '/music/Echoes of You_1_2.mp3',
+    '/music/Echoes of You_2.mp3',
+    '/music/Echoes of You_jazzy_inst.mp3',
+    '/music/swing_jazz_1.mp3',
+    '/music/swing_jazz_2.mp3',
+    // 더 많은 트랙 추가 가능
+  ];
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <GlobalStyles />
@@ -245,6 +256,7 @@ function App() {
             </ProjectsSection>
           </MainContent>
         </div>
+        <BackgroundMusic playlist={playlist} autoPlay={false} />
       </AppContainer>
     </ThemeProvider>
   );
