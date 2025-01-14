@@ -91,7 +91,7 @@ export const projects: Project[] = [
   {
     title: "Quantum Mechanics Research",
     description: "Advanced Physics Research in Quantum Computing",
-    images: ["/images/quantum.png"],
+    images: ["/images/quantum.gif"],
     link: "#",
     category: ["research", 'physics'],
     techStack: ["Quantum Computing", "Physics", "Mathematical Analysis"],
