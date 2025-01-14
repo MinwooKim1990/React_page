@@ -28,22 +28,31 @@ const MusicControl = styled.button`
 
 interface BackgroundMusicProps {
   playlist: string[];
-  autoPlay?: boolean;
 }
 
-export const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ playlist, autoPlay = false }) => {
+export const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ playlist }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(0);
+  const [isInitialized, setIsInitialized] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    audioRef.current = new Audio(playlist[currentTrack]);
-    audioRef.current.loop = false;
-    
-    if (autoPlay) {
-      setIsPlaying(true);
-    }
+  const initializeAudio = () => {
+    if (!isInitialized && playlist.length > 0) {
+      audioRef.current = new Audio();
+      audioRef.current.src = playlist[currentTrack];
+      audioRef.current.load();
+      
+      // 트랙이 끝나면 다음 트랙 재생
+      audioRef.current.onended = () => {
+        const nextTrack = (currentTrack + 1) % playlist.length;
+        setCurrentTrack(nextTrack);
+      };
 
+      setIsInitialized(true);
+    }
+  };
+
+  useEffect(() => {
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -52,35 +61,39 @@ export const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ playlist, auto
     };
   }, []);
 
+  // 트랙이 변경될 때마다 새 트랙 로드
   useEffect(() => {
-    if (audioRef.current) {
+    if (audioRef.current && isInitialized) {
+      audioRef.current.src = playlist[currentTrack];
+      audioRef.current.load();
       if (isPlaying) {
         audioRef.current.play().catch(error => {
           console.error('음악 재생 실패:', error);
           setIsPlaying(false);
         });
-      } else {
-        audioRef.current.pause();
       }
     }
-  }, [isPlaying]);
+  }, [currentTrack, playlist, isInitialized]);
 
-  // 현재 트랙이 끝나면 다음 트랙으로 넘어가기
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.onended = () => {
-        const nextTrack = (currentTrack + 1) % playlist.length;
-        setCurrentTrack(nextTrack);
-        audioRef.current = new Audio(playlist[nextTrack]);
-        if (isPlaying) {
-          audioRef.current.play().catch(console.error);
+  const togglePlay = async () => {
+    try {
+      if (!isInitialized) {
+        initializeAudio();
+      }
+
+      if (audioRef.current) {
+        if (!isPlaying) {
+          await audioRef.current.play();
+          setIsPlaying(true);
+        } else {
+          audioRef.current.pause();
+          setIsPlaying(false);
         }
-      };
+      }
+    } catch (error) {
+      console.error('음악 재생/정지 실패:', error);
+      setIsPlaying(false);
     }
-  }, [currentTrack, playlist, isPlaying]);
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
   };
 
   return (

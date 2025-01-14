@@ -256,7 +256,7 @@ function App() {
             </ProjectsSection>
           </MainContent>
         </div>
-        <BackgroundMusic playlist={playlist} autoPlay={false} />
+        <BackgroundMusic playlist={playlist} />
       </AppContainer>
     </ThemeProvider>
   );
