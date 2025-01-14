@@ -680,7 +680,7 @@ Error generating stack: `+V.message+`
 - Understand Image, Text, Audio, Function Call
 - Response with Discord Bot
 - Advanced multimodal processing
-    `},{title:"Quantum Mechanics Research",description:"Advanced Physics Research in Quantum Computing",images:["/images/quantum.png"],link:"#",category:["research","physics"],techStack:["Quantum Computing","Physics","Mathematical Analysis"],details:`
+    `},{title:"Quantum Mechanics Research",description:"Advanced Physics Research in Quantum Computing",images:["/images/quantum.gif"],link:"#",category:["research","physics"],techStack:["Quantum Computing","Physics","Mathematical Analysis"],details:`
 - Quantum Computing research
 - Feynman Integral analysis
 - Advanced theoretical physics applications
