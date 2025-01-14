@@ -79,7 +79,7 @@ export const projects: Project[] = [
     title: "J.A.R.V.I.S - Multimodal General Assistant",
     description: "AI-powered Multimodal Assistant system",
     images: ["/images/JARVIS.png"],
-    link: "#",
+    link: "https://github.com/MinwooKim1990/portfolio/tree/d316a12a73eb0ae7d2c7c3c913f6f1603f55a51f/JARVIS",
     category: ["vision", "nlp"],
     techStack: ["Function Call", "Image Understanding", "STT, TTS", "Reduce Latency"],
     details: `
@@ -91,8 +91,8 @@ export const projects: Project[] = [
   {
     title: "Quantum Mechanics Research",
     description: "Advanced Physics Research in Quantum Computing",
-    images: [],
-    link: "https://github.com/MinwooKim1990/optimization",
+    images: ["/images/quantum.png"],
+    link: "#",
     category: ["research", 'physics'],
     techStack: ["Quantum Computing", "Physics", "Mathematical Analysis"],
     details: `
@@ -102,12 +102,12 @@ export const projects: Project[] = [
     `
   },
   {
-    title: "Mamba Architecture Research",
+    title: "LLM Architecture Research",
     description: "Research on New Architecture for LLM",
     images: [],
     link: "#",
     category: ["research"],
-    techStack: ["Mamba", "Jamba", "Hymba", "LTC"],
+    techStack: ["Mamba", "Jamba", "Hymba", "LTC", "Probability field"],
     details: `
 - Research New Architecture for LLM
 - Optimize Computing
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     `
   },
   {
-    title: "Paged Attention Research (KV Cache)",
+    title: "Paged Attention Research",
     description: "Model optimization research in KV cache",
     images: ["/images/PagedAttention.png"],
     link: "https://github.com/MinwooKim1990/portfolio/blob/d316a12a73eb0ae7d2c7c3c913f6f1603f55a51f/PagedAttention/PA_Report.md",
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     title: "Reinforcement Learning Chess",
     description: "Chess AI with MCTS and Deep Q-Network",
     images: ["/images/RLChess.png"],
-    link: "#",
+    link: "https://github.com/MinwooKim1990/RLChess",
     category: ["machine-learning", "research"],
     techStack: ["MCTS", "DQN", "Parallel Processing"],
     details: `
