@@ -336,8 +336,8 @@ const getDetailFileName = (title: string) => {
     'Closetmate - AI Fashion Assistant': 'Closetmate.pdf',
     'J.A.R.V.I.S - Multimodal General Assistant': 'JARVIS.md',
     'Quantum Mechanics Research': 'Quantum.md',
-    'Mamba Architecture Research': 'Mamba.md',
-    'Paged Attention Research (KV Cache)': 'PA_Report.md',
+    'LLM Architecture Research': 'Mamba.md',
+    'Paged Attention Research': 'PA_Report.md',
     'Monosemantic Neuron Research': 'MN_Report.md',
     'Parametric Neural Networks Integration': 'PNNI.pdf',
     'Reinforcement Learning Chess': 'RLChess.md'
