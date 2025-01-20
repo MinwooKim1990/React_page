@@ -165,5 +165,18 @@ export const projects: Project[] = [
 - Reinforcement Learning with Deep Q-Network
 - Parallel Computing for enhanced performance
     `
+  },
+  {
+    title: "GraphRAG with Swarm Agents",
+    description: "General story making AI with GraphRAG and Swam Agents. Using Caching and Reranking for reduce token usage and best search.",
+    images: ["/images/"],
+    link: "https://github.com/MinwooKim1990/",
+    category: ["nlp", "research"],
+    techStack: ["GraphRAG", "Swarm", "Prompt Caching", "Reranking"],
+    details: `
+- Optimized caching for reducing token usage
+- Agent process for reasoning and optimized process
+- Vector embedding and Reranking for quality search by LLM
+    `
   }
 ];

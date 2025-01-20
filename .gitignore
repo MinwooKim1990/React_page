@@ -1,4 +1,5 @@
 # Logs
+# Start of Selection
 logs
 *.log
 npm-debug.log*
@@ -22,3 +23,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# 비디오 파일 업로드 금지
+*.mp4
+*.avi
+*.mkv
