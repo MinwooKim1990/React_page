@@ -11,6 +11,19 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "RLTrading - Automatic Trading System by Reinforcement Learning",
+    description: "AI-powered Trading System by Reinforcement Learning",
+    images: ["/images/RLTrading.png"],
+    link: "https://github.com/MinwooKim1990/RLTrading",
+    category: ["machine-learning"],
+    techStack: ["Reinforcement Learning", "Deep Q Network", "Quantitative Trading"],
+    details: `
+- Reinforcement Learning with Trading Environment
+- Reinforcement Learning with Deep Learning
+- Reinforcement Learning with Quantitative Trading
+    `
+  },
+  {
     title: "Scouter - AI Vision Analysis Assistant Platform",
     description: "AI-powered Vision Analysis platform for Hearing impaired People",
     images: ["https://www.youtube.com/embed/Uxv_diDK-7s"],
