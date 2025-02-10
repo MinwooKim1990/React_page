@@ -17,11 +17,7 @@ export const projects: Project[] = [
     link: "https://github.com/MinwooKim1990/RLTrading",
     category: ["machine-learning"],
     techStack: ["Reinforcement Learning", "Deep Q Network", "Quantitative Trading"],
-    details: `
-- Reinforcement Learning with Trading Environment
-- Reinforcement Learning with Deep Learning
-- Reinforcement Learning with Quantitative Trading
-    `
+    details: `/details/RLTrading.md`
   },
   {
     title: "Scouter - AI Vision Analysis Assistant Platform",
