@@ -346,6 +346,7 @@ const getDetailFileName = (title: string) => {
     'GraphRAG with Swarm Agents': 'GraphRAG.md',
     'Remember Me': 'RememberMe.md',
     'Personal Prompter': 'PersonalPrompter.md',
+    'Personal Traveler Assistant': 'PTA.md',
   };
   return fileMap[title] || '';
 };

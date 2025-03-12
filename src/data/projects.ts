@@ -218,4 +218,16 @@ export const projects: Project[] = [
 - Use function call to get internet based new information
     `
   },
+  {
+    title: "Personal Traveler Assistant",
+    description: "Personal Traveler Assistant with LLM",
+    images: ["https://youtube.com/shorts/Fp6SPySwiK8?feature=share"],
+    link: "https://github.com/MinwooKim1990/Traveler",
+    category: ["nlp"],
+    techStack: ["Function call", "Gemini", "Shortcut"],
+    details: `
+- Use LLM to get travel information
+- Use function call to get internet based new information
+    `
+  },
 ];
