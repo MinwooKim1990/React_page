@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeMathJax from 'rehype-mathjax';
 import remarkMath from 'remark-math';
+import ReactGA from 'react-ga4';
 
 const ProjectCard = styled(motion.div)`
   background: #ffffff;
@@ -340,9 +341,24 @@ const getDetailFileName = (title: string) => {
     'Paged Attention Research': 'PA_Report.md',
     'Monosemantic Neuron Research': 'MN_Report.md',
     'Parametric Neural Networks Integration': 'PNNI.pdf',
-    'Reinforcement Learning Chess': 'RLChess.md'
+    'Reinforcement Learning Chess': 'RLChess.md',
+    'RLTrading - Automatic Trading System by Reinforcement Learning': 'RLTrading.md',
+    'GraphRAG with Swarm Agents': 'GraphRAG.md',
+    'Remember Me': 'RememberMe.md',
+    'Personal Prompter': 'PersonalPrompter.md',
   };
   return fileMap[title] || '';
+};
+
+// 프로젝트 클릭 시 이벤트 추적 함수 추가
+const handleProjectClick = (title: string) => {
+  ReactGA.event({
+    category: 'User Interaction',
+    action: 'Project Selected',
+    label: title
+  });
+  
+  // 기존 모달 열기 코드가 있다면 여기에 유지
 };
 
 export const ProjectNode: React.FC<Project> = (project) => {
@@ -416,6 +432,9 @@ export const ProjectNode: React.FC<Project> = (project) => {
     } else if (url.includes('youtu.be')) {
       const videoId = url.split('/').pop();
       return `https://www.youtube.com/embed/${videoId}`;
+    } else if (url.includes('youtube.com/shorts/')) {
+      const videoId = url.split('shorts/')[1].split('?')[0];
+      return `https://www.youtube.com/embed/${videoId}`;
     }
     return url;
   };
@@ -487,7 +506,10 @@ export const ProjectNode: React.FC<Project> = (project) => {
                 <FaGithub /> GitHub
               </ActionButton>
             )}
-            <ActionButton onClick={() => setIsModalOpen(true)}>
+            <ActionButton onClick={() => {
+              handleProjectClick(project.title);
+              setIsModalOpen(true);
+            }}>
               <FaExpand /> Details
             </ActionButton>
           </ButtonContainer>

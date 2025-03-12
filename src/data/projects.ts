@@ -17,7 +17,11 @@ export const projects: Project[] = [
     link: "https://github.com/MinwooKim1990/RLTrading",
     category: ["machine-learning"],
     techStack: ["Reinforcement Learning", "Deep Q Network", "Quantitative Trading"],
-    details: `/details/RLTrading.md`
+    details: `
+- Reinforcement Learning with Trading Environment
+- Reinforcement Learning with Deep Learning
+- Reinforcement Learning with Quantitative Trading
+    `
   },
   {
     title: "Scouter - AI Vision Analysis Assistant Platform",
@@ -187,5 +191,31 @@ export const projects: Project[] = [
 - Agent process for reasoning and optimized process
 - Vector embedding and Reranking for quality search by LLM
     `
-  }
+  },
+  {
+    title: "Remember Me",
+    description: "Mobile application for getting alarm when user forget to use coupons, tickets, schedule, etc and organize captured images and get recommendation.",
+    images: ["https://youtube.com/shorts/PaRFi6nmEjA"],
+    link: "https://github.com/we-are-coco",
+    category: ["vision", "machine-learning"],
+    techStack: ["Vector Search", "Azure", "Policy Regression Optimization"],
+    details: `
+- Delicate Vector Search from natural language
+- Categorize captured images with Azure Cognitive Service
+- Policy Regression Optimization for schedule recommendation
+    `
+  },
+  {
+    title: "Personal Prompter",
+    description: "Personal Prompt refiner for LLM",
+    images: ["https://youtu.be/YxjQz3D-nK4"],
+    link: "https://github.com/MinwooKim1990/",
+    category: ["nlp"],
+    techStack: ["Function call", "Groq", "GUI"],
+    details: `
+- Refine prompt for better result
+- Use Reasoning model to get analysed result
+- Use function call to get internet based new information
+    `
+  },
 ];

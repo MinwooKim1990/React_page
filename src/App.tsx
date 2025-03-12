@@ -8,6 +8,7 @@ import { ProjectNode } from './components/ProjectNode';
 import { ThemeToggle } from './components/ThemeToggle';
 import { projects, Project } from './data/projects';
 import { BackgroundMusic } from './components/BackgroundMusic';
+import ReactGA from 'react-ga4';
 
 /* 1) Define Light & Dark Themes */
 const lightTheme = {
@@ -132,6 +133,13 @@ function App() {
 
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
+    
+    // 테마 변경 이벤트 추적
+    ReactGA.event({
+      category: 'User Interaction',
+      action: 'Theme Changed',
+      label: isDarkTheme ? 'Light Theme' : 'Dark Theme'
+    });
   };
 
   const projectsWithOrder: ProjectWithOrder[] = projects.map(project => ({
@@ -147,7 +155,10 @@ function App() {
            project.title === "Monosemantic Neuron Research" ? "r2" :
            project.title === "Paged Attention Research (KV Cache)" ? "r3" :
            project.title === "Parametric Neural Networks Integration" ? "r4" :
-           "r5"  // Quantum Mechanics Research
+           project.title === "Quantum Mechanics Research" ? "r5" :
+           project.title === "GraphRAG with Swarm Agents" ? "r6" :
+           project.title === "RLTrading - Automatic Trading System by Reinforcement Learning" ? "r7" :
+           "r8"
   }));
 
   const sortProjects = (projects: ProjectWithOrder[]) => {
@@ -170,14 +181,29 @@ function App() {
   );
 
   const playlist = [
-    '/music/Echoes of You_1_1.mp3',
-    '/music/Echoes of You_1_2.mp3',
-    '/music/Echoes of You_2.mp3',
-    '/music/Echoes of You_jazzy_inst.mp3',
-    '/music/swing_jazz_1.mp3',
-    '/music/swing_jazz_2.mp3',
+    '/React_page/music/First.mp3',
+    '/React_page/music/Second.mp3',
+    '/React_page/music/Third.mp3',
+    '/React_page/music/Echoes of You_1_1.mp3',
+    '/React_page/music/Echoes of You_1_2.mp3',
+    '/React_page/music/Echoes of You_2.mp3',
+    '/React_page/music/Echoes of You_jazzy_inst.mp3',
+    '/React_page/music/swing_jazz_1.mp3',
+    '/React_page/music/swing_jazz_2.mp3',
     // 더 많은 트랙 추가 가능
   ];
+
+  // 필터 변경 함수를 수정하여 이벤트 추적 기능 추가
+  const handleFilterChange = (filter: string) => {
+    setActiveFilter(filter);
+    
+    // 필터 변경 이벤트 추적
+    ReactGA.event({
+      category: 'User Interaction',
+      action: 'Filter Changed',
+      label: filter
+    });
+  };
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -208,37 +234,37 @@ function App() {
               <FilterContainer>
                 <FilterButton
                   active={activeFilter === 'all'}
-                  onClick={() => setActiveFilter('all')}
+                  onClick={() => handleFilterChange('all')}
                 >
                   All
                 </FilterButton>
                 <FilterButton
                   active={activeFilter === 'vision'}
-                  onClick={() => setActiveFilter('vision')}
+                  onClick={() => handleFilterChange('vision')}
                 >
                   Vision
                 </FilterButton>
                 <FilterButton
                   active={activeFilter === 'nlp'}
-                  onClick={() => setActiveFilter('nlp')}
+                  onClick={() => handleFilterChange('nlp')}
                 >
                   NLP
                 </FilterButton>
                 <FilterButton
                   active={activeFilter === 'research'}
-                  onClick={() => setActiveFilter('research')}
+                  onClick={() => handleFilterChange('research')}
                 >
                   Research
                 </FilterButton>
                 <FilterButton
                   active={activeFilter === 'machine-learning'}
-                  onClick={() => setActiveFilter('machine-learning')}
+                  onClick={() => handleFilterChange('machine-learning')}
                 >
                   Machine Learning
                 </FilterButton>
                 <FilterButton
                   active={activeFilter === 'physics'}
-                  onClick={() => setActiveFilter('physics')}
+                  onClick={() => handleFilterChange('physics')}
                 >
                   Physics
                 </FilterButton>
